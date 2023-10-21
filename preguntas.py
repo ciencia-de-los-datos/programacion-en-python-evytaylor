@@ -23,7 +23,6 @@ datos = [line.split('|') for line in datos]
 
 
 def pregunta_01():
-    
     suma = 0
     for lista in datos:
         suma += int(lista[1])
