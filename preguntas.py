@@ -69,37 +69,37 @@ def pregunta_06():
     datos_dic = []
     valores = [x[4] for x in datos]
     lista_valores = [x.split(",") for x in valores]
-    
+
     for x in lista_valores:
         for y in x:
             nueva_lista_valores.append(y.split(":"))
-            
-            for i, j in itertools.groupby(sorted(nueva_lista_valores), lambda x : x[0]):
-                valores_list = [int(x[1]) for x in j]
-                datos_dic.append((i, min(valores_list), max(valores_list)))
-                
-                return datos_dic
+
+    for i, j in itertools.groupby(sorted(nueva_lista_valores), lambda x : x[0]):
+            valores_list = [int(x[1]) for x in j]
+            datos_dic.append((i, min(valores_list), max(valores_list)))
+
+    return datos_dic
 
 def pregunta_07():
 
     columnas = [x[:2] for x in datos]
     new_group = []
-    
+
     for i, j in itertools.groupby(sorted(columnas, key = lambda x: x[1]), lambda x: x[1]):
         new_group.append((int(i), [x[0] for x in j]))
-        
-        return new_group
+
+    return new_group
 
 
 def pregunta_08():
 
     columnas = [x[:2] for x in datos]
     new_group = []
-    
+
     for i, j in itertools.groupby(sorted(columnas, key = lambda x: x[1]), lambda x: x[1]):
         new_group.append((int(i), sorted(list(set([x[0] for x in j])))))
-        
-        return new_group 
+
+    return new_group
 
 def pregunta_09():
     nueva_lista_valores = []
@@ -129,39 +129,40 @@ def pregunta_10():
 
 def pregunta_11():
 
- col1 = [itemgetter(1)(i) for i in datos]
- col3 = [i[3].split(",") for i in datos]
- new_ = zip(col1,col3)
- new_1 = []
- new_group = []
- 
- for x in list(new_):
-     for y in x[1]:
-        new_1.append((x[0],y))
-        
-        for i, j in itertools.groupby(sorted(new_1, key = lambda x: x[1]), lambda x: x[1]):
-            new_group.append((i, sum([int(y[0]) for y in j])))
-            
-            return dict(new_group)
+    col1 = [itemgetter(1)(i) for i in datos]
+    col3 = [i[3].split(",") for i in datos]
+
+    new_ = zip(col1,col3)
+    new_1 = []
+    new_group = []
+
+    for x in list(new_):
+        for y in x[1]:
+            new_1.append((x[0],y))
+
+    for i, j in itertools.groupby(sorted(new_1, key = lambda x: x[1]), lambda x: x[1]):
+        new_group.append((i, sum([int(y[0]) for y in j])))
+
+    return dict(new_group)
 
 
 def pregunta_12():
 
     col0 = [itemgetter(0)(i) for i in datos]
     col4 = [i[4].split(",") for i in datos]
-    
+
     valores = []
     a = 0
     for x in col4:
         for y in x:
             a += (int(y[y.index(":")+1:]))
-            valores.append(a)
-            a = 0
-            
-            new_ = zip(col0,valores)
-            new_group = []
-            
-            for i, j in itertools.groupby(sorted(list(new_), key = lambda x: x[0]), lambda x: x[0]):
-                new_group.append((i, sum(y[1] for y in j)))
-                
-                return dict(new_group)
+        valores.append(a)
+        a = 0
+
+    new_ = zip(col0,valores)
+    new_group = []
+
+    for i, j in itertools.groupby(sorted(list(new_), key = lambda x: x[0]), lambda x: x[0]):
+        new_group.append((i, sum(y[1] for y in j)))
+
+    return dict(new_group)
