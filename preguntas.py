@@ -11,17 +11,25 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
+import itertools
+from collections import Counter
+from datetime import datetime
+from operator import itemgetter
+
+with open ("data.csv", "r") as file:
+        datos = file.readlines()
+datos = [line.replace('\t','|').replace('\n','') for line in datos]
+datos = [line.split('|') for line in datos]
 
 
 def pregunta_01():
-    """
-    Retorne la suma de la segunda columna.
+ suma = 0
+    for lista in datos:
+        suma += int(lista[1])
+    
+    return suma
 
-    Rta/
-    214
 
-    """
-    return
 
 
 def pregunta_02():
