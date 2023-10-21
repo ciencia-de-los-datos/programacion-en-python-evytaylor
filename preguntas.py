@@ -23,11 +23,12 @@ datos = [line.split('|') for line in datos]
 
 
 def pregunta_01():
+
     suma = 0
     for lista in datos:
         suma += int(lista[1])
-        
-        return suma
+    
+    return suma
 
 def pregunta_02():
     columna = [fila[0] for fila in datos]
